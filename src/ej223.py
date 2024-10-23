@@ -31,7 +31,7 @@ def sacar_impares(numero: int) -> str:
     impares = ""
 
     for i in range(1, numero + 1):
-        if i % 2 != 0: #Con esto se ve si es par
+        if i % 2 != 0: 
             if impares == "":
                 impares += str(i)
             else:
@@ -53,7 +53,7 @@ def main():
 
     if numero is None:
         print("Error: Debe ser un número entero positivo.")
-        return #se acaba si el numero no es válido
+        return 
     
     #Procesamiento
 
