@@ -34,7 +34,53 @@ Distintos ejercicios para aplicar lo visto en sentencias iterativas.
  - Se señalan: la entrada, procesamiento y salida en el main() del ejercicio.
 
 ### Código Fuente
-Ej del ejercicio 2.2.1 "src/ej221.py"
+Ej del ejercicio 2.2.1:
+
+"""
+EJERCICIO 2.2.1 | Escribir un programa que pida al usuario 
+una palabra y la muestre por pantalla 10 veces.
+"""
+def lee_datos():
+    """
+    Lee la palabra introducida por el usuario.
+    :return: La palabra ingresada por el usuario o None si no es válida.
+    """
+    palabra = input("Dime una palabra: ")
+    return palabra.strip() if palabra.strip() else None
+
+def serie_palabra(palabra: str, veces: int = 10) -> str:
+    """
+    Genera una cadena con la palabra repetida 'veces' veces.
+    :param palabra: La palabra que se repite.
+    :param veces: El número de veces que se repite la palabra.
+    :return: La cadena generada.
+    """
+    return (palabra + "\n") * veces
+
+def imprime_serie(serie: str):
+    """
+    Imprime la serie generada de palabras.
+    :param serie: La serie de palabras generada.
+    """
+    print(serie)
+
+def main():
+    # Entrada
+    palabra = lee_datos()
+    if palabra is None:
+        print("Error: No ingresaste una palabra válida.")
+        return
+    
+    # Procesamiento
+    serie = serie_palabra(palabra)
+
+    # Salida
+    imprime_serie(serie)
+
+# Se llama al programa principal
+if __name__ == '__main__':
+    main()
+
 
 ### Ejemplos de Ejecución
 - ***Entrada y salida incorrecta*** con el valor de edad: 0
@@ -51,7 +97,24 @@ AÑOS CUMPLIDOS => 1..2..3..4..5..6..7..8..9..10..11..12..13..14..15..16..17..18
 ### Resultados de Pruebas
 test del ejercicio 1:
 
-test/test_ejercicio221.py
+# tests/test_ejercicio221.py
+
+from src.ej221 import serie_palabra
+
+def test_serie_palabra():
+    # Prueba para verificar que la serie vaya bien con 10 repeticiones
+    resultado = serie_palabra("Hola")
+    esperado = "Hola\n" * 10
+    assert resultado == esperado
+
+    # Prueba para verificar que genera la serie con un número personalizado
+    resultado = serie_palabra("Hola", 5)
+    esperado = "Hola\n" * 5
+    assert resultado == esperado
+
+# La función imprime_serie no se puede probar directamente sin capturar salida.
+# Pero puedes probar la función lee_datos manualmente.
+
 
 
 ## Conclusiones
